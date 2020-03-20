@@ -9,6 +9,11 @@ angular
 
 		let baseUrl = "/pacientes";
 
+		$routeProvider.when('/testes', {
+			templateUrl: 'partials/teste.html',
+			controller: 'Ctrl3'
+		});
+
 		$routeProvider.when(baseUrl, {
 			templateUrl: 'partials/principal.html',
 			controller: 'PacientesController'

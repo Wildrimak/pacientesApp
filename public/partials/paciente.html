@@ -80,10 +80,14 @@
 
 			<div class="lista_planos" ng-repeat="plano in planos">
 
-				<input type="checkbox" class="form-check-input">
-				<label class="form-check-label" value="plano.id">{{plano.nome}}</label>
+				<input type="checkbox" class="form-check-input" ng-model="paciente.convenios[plano]">
+				<label class="form-check-label">{{plano.nome}}</label>
 
 			</div>
+
+			<label ng-repeat="fruit in [{'id':'apple'}, {'id':'orange'}, {'id':'pear'}, {'id':'naartjie'}] as fruits">
+		    <input type="checkbox" data-checklist-model="paciente.fruits" data-checklist-value="fruit"> {{fruit.id}}
+			</label>
 
 		</div>
 

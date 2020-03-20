@@ -9,6 +9,32 @@ angular.module('pacientesServices', ['ngResource'])
 			}
 		});
 	})
+	.factory('recursoPlano', function($resource) {
+
+		let baseUrl = "http://localhost:8888/planos";
+
+		$scope.planos = [];
+
+		$http
+		.get(baseUrl)
+		.success(function(planos) {
+
+			console.log("Os planos: " + planos);
+			console.log("As propriedades: " + Object.getOwnPropertyNames(planos));
+			console.log(planos[Object.getOwnPropertyNames(planos)[0]]);
+			console.log(planos[Object.getOwnPropertyNames(planos)[1]]);
+
+			planos.forEach((plano, i) => {
+				console.log(plano);
+			});
+
+
+			$scope.planos = planos;
+
+		}).error(function(erro) {
+			console.log(erro);
+		});
+	})
 	.factory("login", function(recursoLogin, $q){
 
 		var service = {};
@@ -49,17 +75,17 @@ angular.module('pacientesServices', ['ngResource'])
 			return $q(function(resolve, reject) {
 
 				if(paciente._id) {
-					recursoPaciente.update({pacienteId: paciente._id}, paciente, function() {
+					recursoPaciente.update({pacienteId: paciente.id}, paciente, function() {
 
 						$rootScope.$broadcast(evento);
 						resolve({
-							mensagem: 'Paciente ' + paciente.nome + ' atualizada com sucesso',
+							mensagem: 'Paciente ' + paciente.nome + ' atualizado com sucesso',
 							inclusao: false
 						});
 					}, function(erro) {
 						console.log(erro);
 						reject({
-							mensagem: 'Não foi possível atualizar a paciente ' + paciente.nome
+							mensagem: 'Não foi possível atualizar o paciente ' + paciente.nome
 						});
 					});
 
@@ -67,7 +93,7 @@ angular.module('pacientesServices', ['ngResource'])
 					recursoPaciente.save(paciente, function() {
 						$rootScope.$broadcast(evento);
 						resolve({
-							mensagem: 'Paciente ' + paciente.nome + ' incluída com sucesso',
+							mensagem: 'Paciente ' + paciente.nome + ' incluído com sucesso',
 							inclusao: true
 						});
 					}, function(erro) {
