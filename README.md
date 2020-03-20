@@ -1,4 +1,4 @@
-#Para iniciar a aplicação com tudo ok
+# Para iniciar a aplicação com tudo ok
 
 ## Utilizando o Json Server de https://github.com/typicode/json-server faça:
 
@@ -54,4 +54,4 @@ npm install -g json-server
   ]
 }
 ```
-E por fim execute o comando: json-server --watch pacientes.json --port 8888 e terás uma API funcional
+E por fim execute o comando: ```json-server --watch pacientes.json --port 8888``` e terás uma API funcional
