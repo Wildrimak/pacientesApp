@@ -11,19 +11,10 @@ angular
 		.get(baseUrl)
 		.success(function(planos) {
 
-			console.log("Os planos: " + planos);
-			console.log("As propriedades: " + Object.getOwnPropertyNames(planos));
-			console.log(planos[Object.getOwnPropertyNames(planos)[0]]);
-			console.log(planos[Object.getOwnPropertyNames(planos)[1]]);
-
-			planos.forEach((plano, i) => {
-				console.log(plano);
-			});
-
-
 			$scope.planos = planos;
 
 		}).error(function(erro) {
 			console.log(erro);
 		});
+		console.log("SAINDO DE PLANOS")
 	});

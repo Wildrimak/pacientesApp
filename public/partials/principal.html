@@ -1,33 +1,34 @@
-<div class="jumbotron">
-	<h1 class="text-center">Pacientes App</h1>
-</div>
+<header>
 
-<p ng-show="mensagem.length" class="alert alert-info">
-	{{mensagem}}
-</p>
+	<div class="jumbotron">
+		<h1 class="text-center">Pacientes App</h1>
+	</div>
 
-<div class="row">
-	<div class="col-md-12">
-		<form>
-			<div class="input-group">
-				<span class="input-group-btn">
-					<a href="/pacientes/novo" class="btn btn-primary" type="button">
-						Novo paciente
-					</a>
-				</span>
-				<input class="form-control" placeholder="filtrar pelo título do paciente"
-					ng-model="filtro" ng-model-options="{ debounce: 500 }">
-		</form>
-	</div> <!-- fim col-md-12 -->
-</div> <!-- fim row -->
+</header>
 
-<div class="row">
-    <div class="col-md-2 painel-animado" ng-repeat="paciente in pacientes">
-        <div cpf="{{paciente.cpf}}" alt="{{paciente.nome}}"></div>
+<main>
 
-		<a class="btn btn-primary btn-block" href="/pacientes/edita/{{paciente.id}}">
-			Editar
+		<div class="container">
+
+		<a type="button" class="btn btn-primary btn-lg btn-block mb-4" href="/pacientes/novo">
+			CADASTRAR NOVO PACIENTE
 		</a>
-		<div nome="Remover" acao="remover(paciente)">Remover</div>
-    </div>
-</div>
+
+		<div class="card mb-4" ng-repeat="paciente in pacientes">
+
+			<div class="card-header text-center"> Ficha {{paciente.id}} - {{paciente.nome}}</div>
+
+			<ul class="list-group list-group-flush">
+		    <li class="list-group-item">Nome - {{paciente.nome}}</li>
+		    <li class="list-group-item">CPF - {{paciente.cpf}}</li>
+		    <li class="list-group-item">Endereço - {{paciente.endereco}}</li>
+		  </ul>
+
+			<div class="card-body">
+		    <a class="btn btn-secondary btn-block" href="/pacientes/edita/{{paciente.id}}" class="card-link">Editar</a>
+		    <a class="btn btn-danger btn-block" href="/pacientes/deleta/{{paciente.id}}" acao="remover(paciente)" class="card-link">Deletar</a>
+		  </div>
+		</div>
+	</div>
+
+</main>

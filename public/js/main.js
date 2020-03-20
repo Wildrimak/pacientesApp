@@ -24,8 +24,12 @@ angular
 			controller: 'PacienteController'
 		});
 
-		$routeProvider.when(baseUrl + '/edita/:pacienteId', {
+		$routeProvider.when(baseUrl + '/edita/:id', {
 			templateUrl: 'partials/paciente.html',
+			controller: 'PacienteController'
+		});
+
+		$routeProvider.when(baseUrl + '/deleta/:id', {
 			controller: 'PacienteController'
 		});
 
