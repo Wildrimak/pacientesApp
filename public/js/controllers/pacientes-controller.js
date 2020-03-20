@@ -1,10 +1,12 @@
-angular.module('pacientesApp').controller('PacientesController', function($scope, recursoFoto) {
+angular
+.module('pacientesApp')
+.controller('PacientesController', function($scope, recursoPaciente) {
 
 	$scope.pacientes = [];
 	$scope.filtro = '';
 	$scope.mensagem = '';
 
-	recursoFoto.query(function(pacientes) {
+	recursoPaciente.query(function(pacientes) {
 		$scope.pacientes = pacientes;
 	}, function(erro) {
 		console.log(erro);
@@ -12,7 +14,7 @@ angular.module('pacientesApp').controller('PacientesController', function($scope
 
 	$scope.remover = function(paciente) {
 
-		recursoFoto.delete({pacienteId: paciente._id}, function() {
+		recursoPaciente.delete({pacienteId: paciente._id}, function() {
 			var indiceDaFoto = $scope.pacientes.indexOf(paciente);
 			$scope.pacientes.splice(indiceDaFoto, 1);
 			$scope.mensagem = 'Paciente ' + paciente.nome + ' removida com sucesso!';
