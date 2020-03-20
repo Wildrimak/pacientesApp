@@ -4,8 +4,8 @@ var Datastore = require('nedb')
 
 if(!db) {
     db = new Datastore({
-        filename: dbName, 
-        autoload: true 
+        filename: dbName,
+        autoload: true
     });
     console.log('Banco ' + dbName + ' pronto para uso')
 }

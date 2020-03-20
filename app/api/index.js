@@ -3,12 +3,23 @@ var db = require('../../config/database');
 var api = {}
 
 api.adiciona = function(req, res) {
-    
+
     db.insert(req.body, function(err, newDoc) {
         if(err) return console.log(err);
         console.log('Adicionado com sucesso: ' + newDoc._id);
         res.json(newDoc._id);
-    });  
+    });
+};
+
+api.loga = function(req, res) {
+  console.log('Cheguei em loga');
+  console.log('My req.body.cpf: ' + req.body.cpf);
+  db.findOne({_cpf: req.body.cpf}, function(err, doc) {
+      console.log('O doc é: ' + doc);
+      console.log('O err é: ' + err);
+      if (err) return console.log(err);
+      res.json(doc);
+  });
 };
 
 api.busca = function(req, res) {
@@ -19,14 +30,14 @@ api.busca = function(req, res) {
 };
 
 api.atualiza = function(req, res) {
-    
+
     db.update({_id : req.params.fotoId }, req.body, function(err, numReplaced) {
         if (err) return console.log(err);
         if(numReplaced) res.status(200).end();
         res.status(500).end();
         console.log('Atualizado com sucesso: ' + req.body._id);
         res.status(200).end();
-    });  
+    });
 };
 
 api.lista = function(req, res) {
@@ -59,19 +70,19 @@ api.listaGrupos = function(req, res) {
 
     res.json([
         {
-            _id: 1, 
+            _id: 1,
             nome: 'esporte'
-        }, 
-        { 
-            _id: 2, 
-            nome: 'lugares', 
-        }, 
-        { 
-            _id: 3, 
+        },
+        {
+            _id: 2,
+            nome: 'lugares',
+        },
+        {
+            _id: 3,
             nome: 'animais'
         }
     ]);
-        
+
 };
 
 

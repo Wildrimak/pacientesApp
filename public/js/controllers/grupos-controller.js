@@ -1,4 +1,4 @@
-angular.module('alurapic')
+angular.module('pacientesApp')
 	.controller('GruposController', function($scope, $http) {
 		$http.get('/v1/grupos')
 			.success(function(grupos) {

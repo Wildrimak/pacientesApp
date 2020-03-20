@@ -1,0 +1,37 @@
+<div class="page-header text-center">
+  <h2>Login</h2>
+</div>
+
+<form novalidate name="formularioLogin" class="row" ng-submit="fazerLogin()">
+
+  <div class="col-md-8">
+
+    <div class="form-group">
+
+      <label>CPF</label>
+      <input name="cpf" class="form-control" ng-model="login.cpf" required placeholder="000.000.000-00" autocomplete="username">
+      <span ng-show="formularioLogin.$submitted && formularioLogin.cpf.$error.required" class="text-danger">
+        Por favor digite seu cpf!
+      </span>
+
+    </div>
+
+    <div class="form-group">
+
+      <label>Senha</label>
+      <input name="senha" type="password" class="form-control" ng-model="login.senha" required autocomplete="current-password">
+      <span ng-show="formularioLogin.$submitted && formularioLogin.senha.$error.required" class="text-danger">
+        Por favor digite sua senha!
+      </span>
+    </div>
+
+    <button type="submit" class="btn btn-primary" ng-disabled="formularioLogin.$invalid">
+    Login
+    </button>
+
+    <a href="/" class="btn btn-primary">Cadastre-se</a>
+    <hr>
+
+  </div>
+
+</form>
