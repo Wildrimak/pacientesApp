@@ -1,9 +1,3 @@
-<div class="page-header text-center">
-	<h1>{{paciente.nome}}</h1>
-</div>
-
-<p ng-show="mensagem.length" class="alert alert-info">{{mensagem}}</p>
-
 <form novalidate name="formulario" class="row" ng-submit="submeter()">
 
 	<div class="col-md-12">
@@ -99,7 +93,7 @@
 		</div>
 
 		<button type="submit" class="btn btn-primary" ng-disabled="formulario.$invalid">
-			Cadastrar Paciente
+			Atualizar Paciente
 		</button>
 
 		<a href="/" class="btn btn-primary">Voltar</a>
@@ -108,3 +102,5 @@
 	</div>
 
 </form>
+
+<p ng-show="mensagem.length" class="alert alert-info">{{mensagem}}</p>
