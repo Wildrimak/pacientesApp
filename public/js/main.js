@@ -15,17 +15,17 @@ angular
 		});
 
 		$routeProvider.when(baseUrl, {
-			templateUrl: 'partials/principal.html',
+			templateUrl: 'partials/listar_pacientes.html',
 			controller: 'PacientesController'
 		});
 
 		$routeProvider.when(baseUrl + '/novo', {
-			templateUrl: 'partials/paciente.html',
+			templateUrl: 'partials/cadastrar_paciente.html',
 			controller: 'PacienteController'
 		});
 
 		$routeProvider.when(baseUrl + '/edita/:id', {
-			templateUrl: 'partials/paciente.html',
+			templateUrl: 'partials/atualizar_paciente.html',
 			controller: 'PacienteController'
 		});
 
