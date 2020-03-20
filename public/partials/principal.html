@@ -1,34 +1,19 @@
-<header>
+<a type="button" class="btn btn-primary btn-lg btn-block mb-4" href="/pacientes/novo">
+	CADASTRAR NOVO PACIENTE
+</a>
 
-	<div class="jumbotron">
-		<h1 class="text-center">Pacientes App</h1>
-	</div>
+<div class="card mb-4" ng-repeat="paciente in pacientes">
 
-</header>
+	<div class="card-header text-center"> Ficha {{paciente.id}} - {{paciente.nome}}</div>
 
-<main>
+	<ul class="list-group list-group-flush">
+    <li class="list-group-item">Nome - {{paciente.nome}}</li>
+    <li class="list-group-item">CPF - {{paciente.cpf}}</li>
+    <li class="list-group-item">Endereço - {{paciente.endereco}}</li>
+  </ul>
 
-		<div class="container">
-
-		<a type="button" class="btn btn-primary btn-lg btn-block mb-4" href="/pacientes/novo">
-			CADASTRAR NOVO PACIENTE
-		</a>
-
-		<div class="card mb-4" ng-repeat="paciente in pacientes">
-
-			<div class="card-header text-center"> Ficha {{paciente.id}} - {{paciente.nome}}</div>
-
-			<ul class="list-group list-group-flush">
-		    <li class="list-group-item">Nome - {{paciente.nome}}</li>
-		    <li class="list-group-item">CPF - {{paciente.cpf}}</li>
-		    <li class="list-group-item">Endereço - {{paciente.endereco}}</li>
-		  </ul>
-
-			<div class="card-body">
-		    <a class="btn btn-secondary btn-block" href="/pacientes/edita/{{paciente.id}}" class="card-link">Editar</a>
-		    <a class="btn btn-danger btn-block" ng-click="remover(paciente)" href="#" acao="remover(paciente)" class="card-link">Deletar</a>
-		  </div>
-		</div>
-	</div>
-
-</main>
+	<div class="card-body">
+    <a class="btn btn-secondary btn-block" href="/pacientes/edita/{{paciente.id}}" class="card-link">Editar</a>
+    <a class="btn btn-danger btn-block" ng-click="remover(paciente)" href="#" acao="remover(paciente)" class="card-link">Deletar</a>
+  </div>
+</div>
