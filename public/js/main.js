@@ -29,10 +29,6 @@ angular
 			controller: 'PacienteController'
 		});
 
-		$routeProvider.when(baseUrl + '/deleta/:id', {
-			controller: 'PacienteController'
-		});
-
 		$routeProvider.when('/login', {
 			templateUrl: 'partials/login.html',
 			controller: 'LoginController'
