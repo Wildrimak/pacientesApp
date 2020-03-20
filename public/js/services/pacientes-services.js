@@ -1,40 +1,16 @@
-angular.module('pacientesServices', ['ngResource'])
-.factory('recursoPlano', function($resource) {
-
-	console.log("Entrando em service na fabrica recurso plano");
-	let baseUrl = "http://localhost:8888/planos";
-
-	$scope.planos = [];
-
-	$http
-	.get(baseUrl)
-	.success(function(planos) {
-
-		console.log("Os planos: " + planos);
-		console.log("As propriedades: " + Object.getOwnPropertyNames(planos));
-		console.log(planos[Object.getOwnPropertyNames(planos)[0]]);
-		console.log(planos[Object.getOwnPropertyNames(planos)[1]]);
-		console.log("CHUPA MEU OVO");
-		// planos.forEach((plano, i) => {
-		// 	console.log("O plano: " + plano + " o i: " + i);
-		// });
-
-
-		$scope.planos = planos;
-
-	}).error(function(erro) {
-		console.log(erro);
-	});
-	console.log("Saindo de service na fabrica recurso plano");
-
-})
+angular
+	.module('pacientesServices', ['ngResource'])
 	.factory('recursoPaciente', function($resource) {
 
 		let baseUrl = "http://localhost:8888/pacientes";
 
-		return $resource(baseUrl + '/:paciente_id', null, {
+		return $resource(baseUrl + '/:id', null, {
 			'update' : {
 				method: 'PUT',
+				headers: ''
+			},
+			'delete' : {
+				method: 'DELETE',
 				headers: ''
 			}
 		});
@@ -44,7 +20,7 @@ angular.module('pacientesServices', ['ngResource'])
 
 
 		var service = {};
-
+		console.log("Cadastrando um paciente");
 		service.cadastrar = function(paciente) {
 			return $q(function(resolve, reject) {
 
@@ -79,5 +55,6 @@ angular.module('pacientesServices', ['ngResource'])
 				}
 			});
 		};
+		console.log("Terminando de cadastrar um paciente");
 		return service;
     });

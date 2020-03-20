@@ -26,7 +26,7 @@
 
 			<div class="card-body">
 		    <a class="btn btn-secondary btn-block" href="/pacientes/edita/{{paciente.id}}" class="card-link">Editar</a>
-		    <a class="btn btn-danger btn-block" href="/pacientes/deleta/{{paciente.id}}" acao="remover(paciente)" class="card-link">Deletar</a>
+		    <a class="btn btn-danger btn-block" ng-click="remover(paciente)" href="#" acao="remover(paciente)" class="card-link">Deletar</a>
 		  </div>
 		</div>
 	</div>

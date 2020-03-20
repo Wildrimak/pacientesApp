@@ -14,14 +14,19 @@ angular
 
 	$scope.remover = function(paciente) {
 
-		recursoPaciente.delete({pacienteId: paciente._id}, function() {
-			var indiceDaFoto = $scope.pacientes.indexOf(paciente);
-			$scope.pacientes.splice(indiceDaFoto, 1);
-			$scope.mensagem = 'Paciente ' + paciente.nome + ' removida com sucesso!';
-		}, function(erro) {
-			console.log(erro);
-			$scope.mensagem = 'Não foi possível apagar o paciente ' + paciente.nome;
-		});
+		console.log(paciente);
+		console.log(paciente.id);
+		recursoPaciente.delete(
+			{
+				id: paciente.id
+			}, function() {
+					var indicePaciente = $scope.pacientes.indexOf(paciente);
+					$scope.pacientes.splice(indicePaciente, 1);
+					$scope.mensagem = 'Paciente ' + paciente.nome + ' removida com sucesso!';
+			}, function(erro) {
+					console.log(erro);
+					$scope.mensagem = 'Não foi possível apagar o paciente ' + paciente.nome;
+			});
 	};
 
 });
