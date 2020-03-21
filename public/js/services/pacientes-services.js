@@ -5,6 +5,10 @@ angular
 		let baseUrl = "http://localhost:8888/pacientes";
 
 		return $resource(baseUrl + '/:id', null, {
+			'get' : {
+				method: 'GET',
+				headers: ''
+			},
 			'update' : {
 				method: 'PUT',
 				headers: ''
@@ -17,15 +21,19 @@ angular
 	})
 	.factory("cadastroDePacientes", function(recursoPaciente, $q, $rootScope) {
 
-
-
 		var service = {};
-		console.log("Cadastrando um paciente");
+		console.log("Cadastrando ou atualizando um paciente");
+
 		service.cadastrar = function(paciente) {
 			return $q(function(resolve, reject) {
 
+				console.log(paciente);
+				console.log("Acima paciente obj e abaixo seu id");
+				console.log(paciente.id);
+				console.log(paciente.nome);
+
 				if(paciente.id) {
-					recursoPaciente.update({pacienteId: paciente.id}, paciente, function() {
+					recursoPaciente.update({id: paciente.id}, paciente, function() {
 
 
 						resolve({
