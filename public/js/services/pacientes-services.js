@@ -22,19 +22,12 @@ angular
 	.factory("cadastroDePacientes", function(recursoPaciente, $q, $rootScope) {
 
 		var service = {};
-		console.log("Cadastrando ou atualizando um paciente");
 
 		service.cadastrar = function(paciente) {
 			return $q(function(resolve, reject) {
 
-				console.log(paciente);
-				console.log("Acima paciente obj e abaixo seu id");
-				console.log(paciente.id);
-				console.log(paciente.nome);
-
 				if(paciente.id) {
 					recursoPaciente.update({id: paciente.id}, paciente, function() {
-
 
 						resolve({
 							mensagem: 'Paciente ' + paciente.nome + ' atualizado com sucesso',
@@ -63,6 +56,6 @@ angular
 				}
 			});
 		};
-		console.log("Terminando de cadastrar um paciente");
+
 		return service;
     });
